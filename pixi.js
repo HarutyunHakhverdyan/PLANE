@@ -50,7 +50,7 @@ let result=new Plane(arr.length)
  result.ticker()  
  arr.push(result)
  app.ticker.add((d)=>{
-    if(result.sprite.x>25&&cond1){
+    if(result.sprite.x>45&&cond1){
          result=new Plane(arr.length)
         result.addChild()
         result.ticker()
