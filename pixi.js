@@ -1,59 +1,72 @@
 let app=new PIXI.Application({width:640,height:360,background:0x33FFFF})
 document.body.append(app.view)
-let sprite1 = PIXI.Sprite.from('https://cdn-icons-png.flaticon.com/512/2685/2685659.png');
-let arr=[] 
+let cond1=1
 let cond2=1
-let num=0
-for(let i=0; i<5;i++){ 
-    let sprite1 = PIXI.Sprite.from('https://cdn-icons-png.flaticon.com/512/2685/2685659.png'); 
-    let cont = new PIXI.Container() 
-    cont.addChild(sprite1) 
-    cont.width=0.15 
-    cont.height=0.15
-    arr.push(cont) 
-   sprite1.interactive = true; 
-   sprite1.buttonMode = true; 
-   sprite1.on('click', onClick) 
- let cond1=0
- 
- let k=0
-function onClick() { 
-    debugger
-    if(arr[num].y<0){
-        cond2=1
+let arr=[]
+let num1=0
+class Plane{
+    constructor(arg){
+        this.num=arg
+        this.sprite = PIXI.Sprite.from('https://cdn-icons-png.flaticon.com/512/2685/2685659.png');
+        this.sprite.scale.x *=0.2 ;
+        this.sprite.scale.y *= 0.2;
+        this.sprite.y=100
+        this.sprite.x=-this.sprite.width
+        this.sprite.interactive = true; 
+        this.sprite.buttonMode = true;
+        this.zoom=()=>{
+            this.sprite.scale.y*=1.0005 
+            this.sprite.scale.x*=1.0005 
+        }
+        this.onClick=()=>{
+            if(cond2){
+                app.ticker.add(()=>{
+                    if(this.sprite.y>-100){
+                        num1=this.num
+                        cond2=0
+                     this.sprite.y-=2
+                   }else{cond2=1}
+            })
+         }
+        }
+        this.addChild=()=>{
+            this.sprite.on('click', this.onClick) 
+            this.sprite.on('tap',this.onClick)
+            app.stage.addChild(this.sprite)
+        }
+        this.start=()=>{this.sprite.x+=0.5}
+        this.ticker=()=>{
+            app.ticker.add(()=>{
+                this.start()
+            if(this.sprite.scale.y<0.26){
+                this.zoom()
+           }
+            })
+        }
     }
-    if(cond2){
-       cond1=1;
-       k=i 
-       num=k
-     }
-     cond2=0
-    } 
-app.stage.addChild(arr[i]) 
-    cont.y=200 
-    let eps=0 
-    let cond=1 
-app.ticker.add((d)=>{  
-   eps+=d 
-   if(arr[i].x>=app.view.width){ 
-    cond=0 
-    arr[i].x=-arr[i].width
-} 
-arr[i].x+=0.5 
-   if(cond){ 
-    if(i>=1&&i!=k){ 
-arr[i].x=arr[i-1].x+arr[i-1].width+40
-      } 
-   } 
-     if(cond1){
-        arr[k].y-=2
-       if(k<arr.length-1&&k>0){
-        if(arr[k-1].x<arr[k].x){ 
-            for(let j=0;j<k;j++){
-            arr[j].x+=1
-           } 
-       } 
-     } 
-   }
- }) 
 }
+let result=new Plane(arr.length)
+ result.addChild()
+ result.ticker()  
+ arr.push(result)
+ app.ticker.add((d)=>{
+    if(result.sprite.x>25&&cond1){
+         result=new Plane(arr.length)
+        result.addChild()
+        result.ticker()
+        arr.push(result)
+     }
+     if(!cond2){
+        for(let i=num1;i<arr.length-1;i++){
+            if(arr[num1+1].sprite.x<arr[num1].sprite.x){
+                arr[i+1].sprite.x+=2
+            }
+        }
+     }
+})
+
+
+
+
+
+
