@@ -19,10 +19,10 @@ class Plane{
         this.sprite.interactive = true; 
         this.sprite.buttonMode = true;
         this.onClick=()=>{
-            a=1
-            b=0
-            num=arr.indexOf(this)
             if(cond2){
+                 a=1
+                 b=0
+            num=arr.indexOf(this)
                 app.ticker.add(()=>{
                     if(this.sprite.y>0){
                         cond2=0
