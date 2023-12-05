@@ -64,8 +64,8 @@ app.ticker.add(()=>{
     arr[0].sprite.y=150  
   }
   for(let i=0;i<arr.length;i++){
-    arr[i].sprite.scale.y*=1.0017
-    arr[i].sprite.scale.x*=1.0017
+    arr[i].sprite.scale.y*=1.0015
+    arr[i].sprite.scale.x*=1.0015
     arr[i].sprite.x+=2
     arr[i].sprite.y-=0.1
     if(arr[i].sprite.x>=app.view.width){
