@@ -28,7 +28,7 @@ class Plane{
               let m=1
           app.ticker.add(()=>{
             if(m){
-              if(this.sprite.y>-100){
+              if(this.sprite.y>-101){
                   cond1=0
                   this.sprite.y-=3
                }else{
@@ -47,7 +47,7 @@ class Plane{
         }
     }
 }
-for(let i=0;i<20;i++){
+for(let i=0;i<30;i++){
    let plane= new  Plane(i)
    plane.addChild()
    plane.sprite.x=-100
