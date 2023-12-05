@@ -85,8 +85,8 @@ app.ticker.add(()=>{
         if(d<150){
              for(let i=0;i<num;i++){
              arr[i].sprite.x+=3
-             arr[i].sprite.scale.y*=1.0017
-             arr[i].sprite.scale.x*=1.0017    
+             arr[i].sprite.scale.y*=1.0016
+             arr[i].sprite.scale.x*=1.0016    
            }
          }else{
         num=0
