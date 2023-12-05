@@ -60,12 +60,12 @@ arr[0].sprite.x=-100
 app.ticker.add(()=>{
   if(arr[0].sprite.x>=0){
     arr.unshift(arr1.shift())
-    arr[0].sprite.x=-100
+    arr[0].sprite.x=-150
     arr[0].sprite.y=150  
   }
   for(let i=0;i<arr.length;i++){
-    arr[i].sprite.scale.y*=1.0003
-    arr[i].sprite.scale.x*=1.0003
+    arr[i].sprite.scale.y*=1.0017
+    arr[i].sprite.scale.x*=1.0017
     arr[i].sprite.x+=1
     if(arr[i].sprite.x>=app.view.width){
       let n=arr.pop()
@@ -84,6 +84,8 @@ app.ticker.add(()=>{
         if(d<100){
              for(let i=0;i<num;i++){
              arr[i].sprite.x+=3
+             arr[i].sprite.scale.y*=1.0017
+             arr[i].sprite.scale.x*=1.0017    
            }
          }else{
         num=0
