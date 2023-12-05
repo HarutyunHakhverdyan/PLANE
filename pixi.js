@@ -61,6 +61,7 @@ app.ticker.add(()=>{
   if(arr[0].sprite.x>=0){
     arr.unshift(arr1.shift())
     arr[0].sprite.x=-100
+    arr[0].sprite.y=150  
   }
   for(let i=0;i<arr.length;i++){
     arr[i].sprite.scale.y*=1.0003
