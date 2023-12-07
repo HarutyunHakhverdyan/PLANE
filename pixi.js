@@ -1,6 +1,6 @@
 const app= new PIXI.Application({
-    background: '03FEFE',
-    width:800,
+    background: 'FED300',
+    width:1000,
     height:400
 })
 document.body.appendChild(app.view)
@@ -21,6 +21,7 @@ class Plane{
         this.sprite.buttonMode = true;
         this.sprite.anchor.set(0)
         this.onClick=()=>{
+             length=0
           if(cond1){ 
               d=0
               num=0
@@ -28,7 +29,7 @@ class Plane{
               let m=1
           app.ticker.add(()=>{
             if(m){
-              if(this.sprite.y>-100){
+              if(this.sprite.y>-150){
                   cond1=0
                   this.sprite.y-=3
                }else{
@@ -36,6 +37,7 @@ class Plane{
                 cond1=1
                }
               }
+              length=this.sprite.width
              num=arr.indexOf(this)
           })    
          }
@@ -50,7 +52,7 @@ class Plane{
 for(let i=0;i<30;i++){
    let plane= new  Plane(i)
    plane.addChild()
-   plane.sprite.x=-100
+   plane.sprite.x=-80
    arr1.push(plane)
 }
 
@@ -58,39 +60,44 @@ arr.unshift(arr1.shift())
 arr[0].sprite.x=-100
 
 app.ticker.add(()=>{
-  if(arr[0].sprite.x>=0){
-    arr.unshift(arr1.shift())
-    arr[0].sprite.x=-150
-    arr[0].sprite.y=150  
-  }
-  for(let i=0;i<arr.length;i++){
+  if(arr[0].sprite.x>=-1){
+     arr.unshift(arr1.shift())
+     arr[0].sprite.x=-80
+     arr[0].sprite.y=150  
+   }
+for(let i=0;i<arr.length;i++){
     arr[i].sprite.scale.y*=1.0015
     arr[i].sprite.scale.x*=1.0015
-    arr[i].sprite.x+=2
+    arr[i].sprite.x+=1
     arr[i].sprite.y-=0.1
+    arr[i].sprite.x*=1.0015
     if(arr[i].sprite.x>=app.view.width){
       let n=arr.pop()
       n.sprite.scale.y=0.15
       n.sprite.scale.x=0.15
-      n.sprite.y=150
+      n.sprite.y=-150
       arr1.push(n)
     }
   }
 })
-
- let d=0 
+let d=0 
 app.ticker.add(()=>{
        if(num){
         d+=3
-        if(d<150){
+        if(d<length+10){
+
              for(let i=0;i<num;i++){
+               
              arr[i].sprite.x+=3
-             arr[i].sprite.scale.y*=1.0016
-             arr[i].sprite.scale.x*=1.0016    
+             arr[i].sprite.scale.y*=1.0015 
+             arr[i].sprite.y-=0.1
+            
            }
          }else{
         num=0
       }    
     }
-
 })
+
+
+
