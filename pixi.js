@@ -9,7 +9,6 @@ container.width=300
 app.stage.addChild(container)
 const arr=[]
 let cond1=1
-let cond3=0
 let num=0
 let d=0
 class Plane{
@@ -29,29 +28,28 @@ class Plane{
         num=arr.indexOf(this)
         if(cond1){
             num=0
-            cond3=1
-            let m=1
+            let cond2=1
         app.ticker.add(()=>{
-          if(m){
-            if(this.sprite.y>-100){
+          if(cond2){
+            if(this.sprite.y>-120){
                 cond1=0
                 d=3
                 this.sprite.y-=3
              }else{
-              m=0
+              cond2=0
               cond1=1
              }
             }
            num=arr.indexOf(this)
-        })    
-       }
+         })    
+        }
       }
       this.addChild=()=>{
           this.sprite.on('click', this.onClick) 
           this.sprite.on('tap',this.onClick)
           container.addChild(this.sprite)
       }
-  }
+   }
 }
 for(let i=0;i<20;i++){
 let plane=new Plane()
@@ -100,6 +98,6 @@ app.ticker.add(()=>{
                }
              }
          }  
-})
+    })
 
 
