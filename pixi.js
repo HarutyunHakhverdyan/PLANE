@@ -1,6 +1,6 @@
 const app= new PIXI.Application({
   background: 'FED300',
-  width:1000,
+  width:800,
   height:400
 })
 document.body.appendChild(app.view)
