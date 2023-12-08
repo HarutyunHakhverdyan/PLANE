@@ -86,7 +86,7 @@ app.ticker.add(()=>{
     if(d){
        for(let i=num+1;i<arr.length;i++){
               if(arr[i].sprite.x>-80){
-              if(arr[num+1].sprite.x<arr[num].sprite.x){
+              if(arr[num+1].sprite.x<=arr[num].sprite.x){
                   arr[i].sprite.x+=d
                   arr[i].sprite.scale.y*=1.003
                   arr[i].sprite.scale.x*=1.003
