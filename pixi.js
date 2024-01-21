@@ -103,15 +103,15 @@ for (let i = 0; i < 5; i++){
         bird.scale.y=0.05
         bird.anchor.set(0.5)
         bird.anchor.set(0.5);
-        bird.x = i*50-10*i
-        bird.y = j*40-j*2
-        bird.scale.x+=j/60
-        bird.scale.y+=j/60
+        bird.x = i*50-25*j
+        bird.y = j*50+10
+        bird.scale.x+=j/50
+        bird.scale.y+=j/50
         container.addChild(bird);
         arrBird.push(bird)
     }
 }
-container.y = app.screen.height *1/3;
+container.y = app.screen.height/3;
 let k=app.screen.width/3
 let condRot1=0
 let condRot2=0
