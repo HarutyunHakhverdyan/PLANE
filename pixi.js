@@ -104,7 +104,7 @@ for (let i = 0; i < 5; i++){
         bird.anchor.set(0.5)
         bird.anchor.set(0.5);
         bird.x = i*50-25*j
-        bird.y = j*50+10
+        bird.y = j*40
         bird.scale.x+=j/50
         bird.scale.y+=j/50
         container.addChild(bird);
